@@ -1,12 +1,13 @@
 # Deeplearning
 Deep Learning code and presentation
 
-# Keras
+## Keras
 
 Open anaconda prompt and install keras
+
 pip install keras
 
-# Import keras
+## Import keras
 
 import keras
 
