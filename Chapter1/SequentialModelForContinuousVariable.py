@@ -35,8 +35,9 @@ model.add(Activation('softmax'))
 
 # compile the above model of 2 layers. One important point is selection of loss function. Here
 # since the dependent variable is a continuous variable, we have used 'mean_squared_error'.
-
 model.compile(loss='mean_squared_error', optimizer='sgd', metrics=['accuracy']) 
+
+# For list of loss functions, please see: https://keras.io/losses/
 
 # Now we need to create a numpy matrix x_train and a numpy array y_train
 
