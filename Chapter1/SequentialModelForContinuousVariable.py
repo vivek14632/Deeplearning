@@ -48,3 +48,14 @@ y_train=np.random.rand(100,)
 
 model.fit(x_train, y_train, epochs=5, batch_size=32)
 
+# Lets create a test data
+x_test=np.random.rand(10,5)
+y_test=np.random.rand(10,)
+
+# To evaluate a model
+loss_and_matrix=model.evaluate(x_test, y_test)
+
+# To predict using the model
+model.predict(x_test)
+
+
