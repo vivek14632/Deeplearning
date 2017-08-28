@@ -1,3 +1,11 @@
+# Author: Vivek Singh
+
+# This code builds a Sequential model with 5 independent variables and a continuous dependent variable
+# So, its a case of regression
+
+# The code is adapted from keras documentation: https://keras.io
+
+
 from keras.models import Sequential
 
 model=Sequential()
@@ -25,7 +33,9 @@ model.add(Dense(units=1))
 model.add(Activation('softmax'))
 
 
-# compile the above model of 2 layers
+# compile the above model of 2 layers. One important point is selection of loss function. Here
+# since the dependent variable is a continuous variable, we have used 'mean_squared_error'.
+
 model.compile(loss='mean_squared_error', optimizer='sgd', metrics=['accuracy']) 
 
 # Now we need to create a numpy matrix x_train and a numpy array y_train
