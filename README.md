@@ -19,27 +19,65 @@ https://keras.io/
 
 Chapter 3 - Convolutional Neural Networks
 
+1. Preksha
 
+2. Ravali Kotka
 
+3. Shruthi Reddy
 
-1. Bhaumik-bhaumik@mail.usf.edu 
+4. Sanketh
 
-2. Saurabh-jeet1@mail.usf.edu
+5. Manish
 
-3. Kireet-kireetbharad@mail.usf.edu 
+6. Anoop
 
-4. Jaideep-jaideepsai@mail.usf.edu
+7. Pratishruthi
 
-5. Bibin-bibinjose@mail.usf.edu
+Chapter 4 - GANs and WaveNets
 
+1. Shiva Prasad
+
+2. Shruti Pareek
+
+3. Ankit
+
+4. Bhaumik
+
+5. Saurabh
+
+6. Kireet
+
+Chapter 5 - Word Embeddings
+
+1. Arjun Kadian
+
+2. Gurpreet
+
+3. Deepak
+
+4. Rajiv
+
+5. Jaideep
+
+6. Shalini
 
 Chapter 6 - RNNs
 
+1. Disha
 
-1. Tanay-tanay@mail.usf.edu 
+2. Tanay
 
-2. Vijay-vijayv@mail.usf.edu
+3. Tanuj
 
-3.Maxim-maximkaznov@mail.usf.edu
+4. Manoj Mishra
 
+5. Vijay
+
+6. Pooja
+
+7. Vamsi
+
+8. Suganth
+
+9. Naveen
 
