@@ -1,3 +1,7 @@
+# Authors:
+
+# Data source: https://www.kaggle.com/c/dogs-vs-cats/data
+
 # Vivek: What is the use of ImageDataGenerator?
 from keras.preprocessing.image import ImageDataGenerator
 
