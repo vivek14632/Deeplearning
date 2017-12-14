@@ -1,0 +1,151 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from selenium import webdriver"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 121,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "https://a0.muscache.com/im/pictures/16397337/5539c9c0_original.jpg?aki_policy=large\n",
+      "https://a0.muscache.com/im/pictures/16397133/9698c611_original.jpg?aki_policy=x_large\n",
+      "https://a0.muscache.com/im/pictures/16397356/c6b5c7fa_original.jpg?aki_policy=x_large\n",
+      "https://a0.muscache.com/im/pictures/202387fc-4b85-40e3-a175-1c7111fa06a7.jpg?aki_policy=profile_x_medium\n",
+      "https://a0.muscache.com/im/pictures/c89c6d6a-0ea6-4371-b9e8-ed26ceed38ad.jpg?aki_policy=profile_x_medium\n",
+      "https://a0.muscache.com/im/pictures/c8c6dbe0-6db7-42e4-a86f-96af63bbf057.jpg?aki_policy=profile_x_medium\n",
+      "https://a0.muscache.com/im/pictures/6908345d-b51f-4f1d-a533-59fc6b986300.jpg?aki_policy=profile_x_medium\n",
+      "https://a0.muscache.com/im/pictures/7a4337c3-4caf-4f29-8657-0540ff62aa78.jpg?aki_policy=profile_x_medium\n",
+      "https://a0.muscache.com/im/pictures/202387fc-4b85-40e3-a175-1c7111fa06a7.jpg?aki_policy=profile_x_medium\n",
+      "https://a0.muscache.com/im/pictures/0e395d7f-99e5-471e-933c-f3ec72dbaea6.jpg?aki_policy=profile_x_medium\n",
+      "https://a0.muscache.com/im/pictures/202387fc-4b85-40e3-a175-1c7111fa06a7.jpg?aki_policy=profile_x_medium\n",
+      "https://a0.muscache.com/im/pictures/bb6dbbba-be92-4fa4-acba-7d2de94a88a6.jpg?aki_policy=profile_x_medium\n",
+      "https://a0.muscache.com/im/users/1090470/profile_pic/1406492075/original.jpg?aki_policy=profile_x_medium\n",
+      "https://a0.muscache.com/im/pictures/202387fc-4b85-40e3-a175-1c7111fa06a7.jpg?aki_policy=profile_x_medium\n",
+      "https://a0.muscache.com/airbnb/static/badges/verified_badge-6ee370f5ca86a52ed6198fac858ac1f4.png\n",
+      "https://a0.muscache.com/im/pictures/202387fc-4b85-40e3-a175-1c7111fa06a7.jpg?aki_policy=profile_x_medium\n",
+      "https://maps.googleapis.com/maps/api/staticmap?size=648x348&zoom=14&center=52.34861,4.87515&path=color%3A0x007A87%7Cfillcolor%3A0x00d1c166%7Cweight%3A1%7Cenc%3A%7Dep~Hudw%5CL%7DFf%40wF%60AiFxAqEnBsD~BsClCkBvCaAzCWzCVvC%60AlCjB~BrClBrDxApE%60AhFh%40vFJ%7CFK~Fi%40vFaAfFyArEmBrD_CrCmCjBwC%60A%7BCV%7BCWwCaAmCkB_CsCoBsDyAqEaAiFg%40wFM_G%3F%3F&path=color%3A0xFFAA91%7Cfillcolor%3A0xFFAA9133%7Cweight%3A2%7Cenc%3Asqo~Hmnt%5CoEuW~%40m%40y%40kFqEyVYgQlJw%7D%40dH%7BKxANxTvj%40h%40~j%40nB%7CVVrDvFjYAtQvAtThAlNOFJdAq%40J%3F%60%40iKtCqFxA%7B%40%5D%7BAgAi%40_A_AuCi%40wEWiD_ABeDJeC%7BG%3F%7BB_DhAo%40%7BCaDoSvC%7DA%3F%3F&client=gme-airbnbinc&channel=monorail-prod&signature=Ax0yighmRbr0lhy10Q8_hWCaOHA%3D\n",
+      "https://bat.bing.com/action/0?ti=5187185&Ver=2&mid=3845c720-96ee-0425-1600-bc0ae52153df&evt=pageLoad&sid=a15007ec-1&lt=4444&pi=0&lg=en-US&sw=1440&sh=900&sc=24&tl=Lovely%20bright%20room%20with%20balcony%20and%20beatiful%20view!%20-%20Apartments%20for%20Rent%20in%20Amsterdam,%20North%20Holland,%20Netherlands&p=https%3A%2F%2Fwww.airbnb.com%2Frooms%2F1057494&r=&msclkid=N&rn=33652\n",
+      "https://a0.muscache.com/im/pictures/16397133/9698c611_original.jpg?aki_policy=x_large\n",
+      "https://a0.muscache.com/im/pictures/16397356/c6b5c7fa_original.jpg?aki_policy=x_large\n",
+      "https://a0.muscache.com/im/pictures/16397417/3fb9d8db_original.jpg?aki_policy=x_large\n",
+      "https://a0.muscache.com/im/pictures/16397146/8dfc081b_original.jpg?aki_policy=x_large\n",
+      "https://a0.muscache.com/im/pictures/16717894/b0cb4925_original.jpg?aki_policy=x_large\n",
+      "https://a0.muscache.com/im/pictures/16397337/5539c9c0_original.jpg?aki_policy=xx_large\n",
+      "https://a0.muscache.com/im/pictures/16397133/9698c611_original.jpg?aki_policy=x_large\n",
+      "https://a0.muscache.com/im/pictures/16397356/c6b5c7fa_original.jpg?aki_policy=x_large\n",
+      "https://a0.muscache.com/im/pictures/16397417/3fb9d8db_original.jpg?aki_policy=x_large\n",
+      "https://a0.muscache.com/im/pictures/16397146/8dfc081b_original.jpg?aki_policy=x_large\n",
+      "https://a0.muscache.com/im/pictures/16717894/b0cb4925_original.jpg?aki_policy=x_large\n",
+      "https://a0.muscache.com/im/pictures/16397337/5539c9c0_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397133/9698c611_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397356/c6b5c7fa_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397417/3fb9d8db_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397146/8dfc081b_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16717894/b0cb4925_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397260/06f24d84_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/19257701/35f6b0f6_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/19257796/50c2d2cc_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397237/961d4c5b_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397391/dd7de675_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/19257686/988fabda_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/19257714/d5bd0e41_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397472/3a0a0f0d_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397184/a3e5a196_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397313/52eb8911_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397326/06b84975_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397483/b0c5e807_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397277/6f4c1ac6_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397225/2475868b_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397250/4c20b263_original.jpg?aki_policy=small\n",
+      "https://a0.muscache.com/im/pictures/16397286/f0d9e81a_original.jpg?aki_policy=small\n"
+     ]
+    }
+   ],
+   "source": [
+    "options = webdriver.ChromeOptions()\n",
+    "options.binary_location = '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary'\n",
+    "options.add_argument('window-size=800x841')\n",
+    "options.add_argument('headless')\n",
+    "driver = webdriver.Chrome(chrome_options=options)\n",
+    "\n",
+    "#all images with img tag in the listed url\n",
+    "driver.get('https://www.airbnb.com/rooms/1057494')\n",
+    "driver.find_element_by_css_selector('.btn').click()\n",
+    "\n",
+    "images = driver.find_elements_by_tag_name('img')\n",
+    "#print type(images)\n",
+    "for image in images:\n",
+    "    print(image.get_attribute('src'))\n",
+    "\n",
+    "\n",
+    "\n",
+    "# driver.get('https://www.airbnb.com/rooms/14831696')\n",
+    "# driver.find_element_by_css_selector('.btn').click()\n",
+    "# ids = driver.find_elements_by_xpath(\"//div[@class='_1u9fru1']\")\n",
+    "# print ids\n",
+    "# for x in ids:\n",
+    "    #botLink=x.find_element_by_tag_name('img')\n",
+    "    #print x\n",
+    "\n",
+    "    \n",
+    "# driver.find_element_by_css_selector('.btn').click()\n",
+    "#driver.find_element_by_css_selector('._elqfm6c').click()\n",
+    "# topLinks = driver.find_element_by_class_name('_1u9fru1')\n",
+    "# botLink=topLinks.find_element_by_tag_name('img')\n",
+    "# img_src = botLink.get_attribute(\"src\") \n",
+    "\n",
+    "driver.quit()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 2",
+   "language": "python",
+   "name": "python2"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 2
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython2",
+   "version": "2.7.14"
+  },
+  "widgets": {
+   "state": {},
+   "version": "1.1.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
