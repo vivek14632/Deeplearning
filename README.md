@@ -15,7 +15,6 @@ import keras
 
 https://keras.io/
 
-## Teams
 
 
 
