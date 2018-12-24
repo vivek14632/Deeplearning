@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[56]:
+# In[2]:
 
 
 #imports torch version 0.3.1.post2 is used for this (torch.__version__)
@@ -20,7 +20,7 @@ import os
 import copy
 
 
-# In[57]:
+# In[4]:
 
 
 # Data augmentation and normalization for training
@@ -42,7 +42,18 @@ data_transforms = {
     ]),
 }
 # directory with images
-data_dir = 'hymenoptera_data'
+data_dir = 'data'
+
+
+# In[5]:
+
+
+data_dir
+
+
+# In[6]:
+
+
 # A generic data loader  with dir path and function to transpose data
 image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x),
                                           data_transforms[x])
@@ -60,7 +71,8 @@ dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'val']}
 class_names = image_datasets['train'].classes
 # Context-manager that changes the selected device.
 # device index to select. It’s a no-op if this argument is negative.
-device = torch.cuda.device("cuda:0" if torch.cuda.is_available() else "cpu")
+#device = torch.cuda.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.cuda.device(0)
 print(class_names)
 
 
@@ -78,7 +90,7 @@ print(class_names)
 # 
 # 
 
-# In[58]:
+# In[16]:
 
 
 def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
@@ -111,16 +123,19 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
 
                 # forward
                 # track history if only in train
-                if phase == 'train':
-                    outputs = model(inputs)
-                    _, preds = torch.max(outputs, 1)
-                    loss = criterion(outputs, labels)
+#                  requires_grad=True
+#                 with torch.set_grad_enabled(phase == 'train'):
+                if phase =='train' :
+#                         torch.requires_grad=True       
+                        outputs = model(inputs)
+                        _, preds = torch.max(outputs, 1)
+                        loss = criterion(outputs, labels)
 
-                    # backward + optimize only if in training phase
-                    if phase == 'train':
-                        loss.backward()
-                        outputs.data.zero_()
-                        optimizer.step()
+                        # backward + optimize only if in training phase
+                        if phase == 'train':
+                            loss.backward()
+                            outputs.data.zero_()
+                            optimizer.step()
 
                 # statistics
                 running_loss += loss * inputs.size(0)
@@ -155,7 +170,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
 # 
 # 
 
-# In[59]:
+# In[17]:
 
 
 def hook_feature(module, input, output):
@@ -164,9 +179,10 @@ def load_model():
     # this model has a last conv feature map as 14x14
 
     model_file = 'whole_wideresnet18_places365.pth.tar'
-    if not os.access(model_file, os.W_OK):
-        os.system('wget http://places2.csail.mit.edu/models_places365/' + model_file)
-        os.system('wget https://raw.githubusercontent.com/csailvision/places365/master/wideresnet.py')
+    model_file = 'resnet18_places365.pth.tar'
+    #if not os.access(model_file, os.W_OK):
+    #    os.system('C:\\Users\\vivek4\\Downloads\\wget.exe   http://places2.csail.mit.edu/models_places365/' + model_file)
+    #    os.system('C:\\Users\\vivek4\\Downloads\\wget.exe  https://raw.githubusercontent.com/csailvision/places365/master/wideresnet.py')
     useGPU = 0
     if useGPU == 1:
         model = torch.load(model_file)
@@ -187,7 +203,7 @@ def load_model():
     return model
 
 
-# In[60]:
+# In[18]:
 
 
 features_blobs = []
@@ -203,7 +219,7 @@ model_ft=load_model()
 # 
 # 
 
-# In[62]:
+# In[21]:
 
 
 model_conv = model_ft
@@ -214,7 +230,7 @@ for param in model_conv.parameters():
 # Parameters of newly constructed modules have requires_grad=True by default
 num_ftrs = model_conv.fc.in_features
 # Applies a linear transformation to the incoming data: y=xAT+b
-model_conv.fc = nn.Linear(num_ftrs, 2)
+model_conv.fc = nn.Linear(num_ftrs, 14)
 
 # model_conv = model_conv.to(device)
 
@@ -238,7 +254,7 @@ exp_lr_scheduler = lr_scheduler.StepLR(optimizer_conv, step_size=7, gamma=0.1)
 # 
 # 
 
-# In[63]:
+# In[20]:
 
 
 model_conv = train_model(model_conv, criterion, optimizer_conv,exp_lr_scheduler, num_epochs=10)
